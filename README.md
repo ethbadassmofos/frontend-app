@@ -1,4 +1,4 @@
-# Hackathon React Apollo Example
+# Super awesome ENS App
 
 This is an example UI app for ETHBerlin Hackathon. It uses [React](https://reactjs.org/), [Apollo](https://www.apollographql.com/docs/react/) and [MaterialUI](https://material-ui.com/) libraries.
 
