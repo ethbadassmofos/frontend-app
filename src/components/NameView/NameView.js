@@ -8,7 +8,6 @@ const NameView = ({ data }) => {
   const {
     ensNode: { node: { name }, resolverHistory, ownerHistory = [] }
   } = data
-  console.log(data)
   const massagedData = ownerHistory.map(item => {
     const array = Object.entries(item)
       .map(value => {
@@ -35,6 +34,7 @@ const NameView = ({ data }) => {
         <Label>{`ENS Name - ${name}`}</Label>
       </Card>
       <Card>
+        <Label>Ownership History</Label>
         <Table data={massagedData} />
       </Card>
       {resolverHistory === null ? '' : <Table data={resolverHistory} />}
