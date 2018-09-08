@@ -26,7 +26,10 @@ class App extends Component {
           if (loading) return 'loading'
           if (error) return `Error! ${error.message}`
 
-          return <div>{console.log(data)} hello</div>
+          return <div>
+            {console.log(data)}
+            <Layout />
+          </div>
         }}
       </Query>
     )
