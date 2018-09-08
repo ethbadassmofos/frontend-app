@@ -24,6 +24,8 @@ const GET_ENS_NAME_QUERY = gql`
         }
         node {
           name
+          nameHash
+          label
         }
         tx
         block
