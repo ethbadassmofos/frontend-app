@@ -1,34 +1,43 @@
 const typeDefs2 = `
-type Owner {
-	address: String
-	block: Int
-  txId: String
+type Address {
+  address: String
 }
 
-type Name {
-  name: String # awesome.jefflau.eth
-  label: String # awesome
-  node: String # jefflau.eth
-	# resolver: String
-	# addr: String
-	# content: String
-	subDomains: [Name]
+type Node {
+name: String
+label: String
+node: String
+  subNodes: [Node]
+}
+
+type NodeEvent {
+  node: Node
+  actor: Address
+block: Int
+  tx: String
+  action: String
 }
 
 type Resolver {
-  address: String!
-  block: Int
-  txId: String
+address: String
+block: Int
+txId: String
 }
 
-query ensName(name: String){
-	ownerHistory: [Owner]
+type EnsNode {
+owner: Address,
+  ownerHistory: [NodeEvent]
   resolverHistory: [Resolver]
 }
 
-query ethereumAddress(address: String){
-	names: [Name]
-  namesOwned: Int
+type EthereumAddress {
+  nodeHistory: [NodeEvent]
+  nodes: [Node]
+}
+
+type Query {
+  ensNode(node: String!): EnsNode
+  ethereumAddress(address: String!): EthereumAddress
 }
 `
 
