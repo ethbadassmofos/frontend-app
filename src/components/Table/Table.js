@@ -19,7 +19,7 @@ const ColumnData = ({ data }) => (
   (data || []).map(item => (
     <Row>
       {Object.values(item || {}).map(({ value, options: { type } }) => (
-        <RowItem title={value}>
+        <RowItem>
           <ChainValue type={type} value={value} />
         </RowItem>
       ))}

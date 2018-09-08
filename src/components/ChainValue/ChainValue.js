@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 
+const TITLE = 'View on Etherscan'
+
 const Tx = ({ value, children }) => (
-  <a href={`https://etherscan.io/tx/${value}`}>{children}</a>
+  <a title={TITLE} href={`https://etherscan.io/tx/${value}`}>{children}</a>
 )
 
 const Block = ({ value, children }) => (
-  <a href={`https://etherscan.io/block/${value}`}>{children}</a>
+  <a title={TITLE} href={`https://etherscan.io/block/${value}`}>{children}</a>
 )
 
 const Address = ({ value, children }) => (
-  <a href={`https://etherscan.io/address/${value}`}>{children}</a>
+  <a title={TITLE} href={`https://etherscan.io/address/${value}`}>{children}</a>
 )
 
 export default class ChainValue extends Component {
