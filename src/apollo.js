@@ -13,10 +13,10 @@ const schema = makeExecutableSchema({
   resolvers
 })
 
-// const endpoints = {
-//   simple: 'https://us1.prisma.sh/nevena-djaja/hello-hacker/dev',
-//   ws: 'wss://us1.prisma.sh/nevena-djaja/hello-hacker/dev'
-// }
+const endpoints = {
+  simple: 'https://ensplorer.appspot.com:4000'
+  //ws: 'wss://us1.prisma.sh/nevena-djaja/hello-hacker/dev'
+}
 
 export const apolloClient = new ApolloClient({
   link: new SchemaLink({ schema }),

@@ -8,11 +8,11 @@ const Name = ({ match: { params }, style }) => (
   <Fill
     className="fill"
     style={{
-      ...style,
-      background: 'red'
+      ...style
     }}
   >
     <ViewContainer>
+      NAME
       <Consumer>
         {({ searchQuery }) => <SearchResult query={searchQuery} />}
       </Consumer>
