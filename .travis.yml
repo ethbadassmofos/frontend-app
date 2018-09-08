@@ -11,5 +11,6 @@ deploy:
   skip_cleanup: true
   provider: surge
   project: ./build/
+  domain: ensplorer.surge.sh
   on:
     branch: master
