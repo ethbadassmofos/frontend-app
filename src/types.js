@@ -56,12 +56,15 @@ const typeDefs = `
 
   type ensName {
     name: String
+    label: String
+    nodeHash: String
+    node: String
     ownerHistory: [Owner]
     resolverHistory: [Resolver]
   }
 
   type Query {
-    ensName: ensName
+    ensName(name: String): ensName
   }
 
   schema {

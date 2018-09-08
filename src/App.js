@@ -5,8 +5,8 @@ import { Query } from 'react-apollo'
 import Layout from './components/Layout/Layout'
 
 const GET_ENS_NAME = gql`
-  query ensName {
-    ensName {
+  query ensName($name: String) {
+    ensName(name: $name) {
       name
       ownerHistory {
         address
@@ -21,7 +21,7 @@ const GET_ENS_NAME = gql`
 class App extends Component {
   render() {
     return (
-      <Query query={GET_ENS_NAME}>
+      <Query query={GET_ENS_NAME} variables={{ name: 'jefflau.eth' }}>
         {({ loading, error, data }) => {
           if (loading) return 'loading'
           if (error) return `Error! ${error.message}`
