@@ -3,6 +3,7 @@ import ViewContainer from '../components/ViewContainer'
 import styled from 'styled-components'
 import SearchResult from '../components/SearchResult'
 import Consumer from '../GlobalState'
+import AddressView from '../components/AddressView/'
 
 const Address = ({ match: { params }, style }) => (
   <Fill
@@ -13,7 +14,7 @@ const Address = ({ match: { params }, style }) => (
   >
     <ViewContainer>
       <Consumer>
-        {({ searchQuery }) => <SearchResult query={searchQuery} />}
+        {({ searchQuery }) => <AddressView query={searchQuery} />}
       </Consumer>
     </ViewContainer>
   </Fill>
