@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
+import './globalStyles'
 import Layout from './components/Layout/Layout'
 
 const GET_ENS_NAME = gql`

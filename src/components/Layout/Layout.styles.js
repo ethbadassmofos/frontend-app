@@ -55,9 +55,11 @@ const styles = {
     zIndex: 4
   },
   section: {
+    position: 'relative',
     maxWidth: '580px',
     width: '100%',
-    margin: '0 auto'
+    margin: '0 auto',
+    zIndex: 10
   },
   title: {
     fontSize: '2.5rem',

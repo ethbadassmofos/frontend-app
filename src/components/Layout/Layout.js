@@ -11,7 +11,6 @@ const Layout = ({ name, classes }) => (
     <span className={classes.shape1} />
     <span className={classes.shape2} />
     <span className={classes.shape3} />
-    <span className={classes.shape4} />
     <Grid container direction="column" className={classes.section}>
       <Searchbar onSearch={(value) => {console.log('SEEEEARCH', value)}} />
     </Grid>
