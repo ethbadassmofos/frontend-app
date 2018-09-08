@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <Query query={GET_USERS}>
         {({ loading, error, data }) => {
-          if (loading) return ''
+          if (loading) return 'loading'
           if (error) return `Error! ${error.message}`
 
           return <Layout name={data.users[0].name} />
