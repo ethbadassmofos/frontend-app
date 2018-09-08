@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 import Table from '../Table'
-import { processNodeEventData, processNodeData } from '../../utils/parse'
+import { processNodeEventData, processNodeData } from '../../utils/table'
 
 const AddressView = ({ data }) => {
   const {

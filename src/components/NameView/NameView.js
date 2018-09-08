@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Table from '../Table'
 import Card from '../Card'
-import { processNodeEventData } from '../../utils/parse'
+import { processNodeEventData } from '../../utils/table'
 
 const NameView = ({ data: { ensNode } }) => {
   if (!ensNode) {
