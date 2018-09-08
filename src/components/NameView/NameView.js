@@ -60,10 +60,12 @@ const NameView = ({ data }) => {
       action: 'asdfjkasdj'
     }
   ]
+  const { ensNode } = data
   return (
     <Fragment>
       <Table data={columnData}/>
       <Table data={mockResolverData} />
+      {console.log(ensNode)}
     </Fragment>
   )
 }
