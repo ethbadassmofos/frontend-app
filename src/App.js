@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <Query query={GET_ENS_NAME} variables={{ name: 'jefflau.eth' }}>
         {({ loading, error, data }) => {
-          if (loading) return ''
+          if (loading) return 'loading'
           if (error) return `Error! ${error.message}`
 
           return <div>{console.log(data)} hello</div>
