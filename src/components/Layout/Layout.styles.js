@@ -13,7 +13,8 @@ const styles = {
       left: 0,
       content: 'close-quote',
       opacity: 0.5,
-      background: `url('/images/background-dots.png') repeat`
+      background: `url('/images/background-dots.png') repeat`,
+      zIndex: -1
     }
   },
   shape1: {
