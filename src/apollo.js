@@ -14,7 +14,7 @@ const schema = makeExecutableSchema({
 })
 
 const endpoints = {
-  simple: 'http://localhost:4000/graphql' //'https://ensplorer.appspot.com:4000'
+  simple: 'https://ens-index-dot-ensplorer.appspot.com/graphql' //'https://ensplorer.appspot.com:4000'
   //ws: 'wss://us1.prisma.sh/nevena-djaja/hello-hacker/dev'
 }
 
