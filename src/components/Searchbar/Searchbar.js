@@ -3,6 +3,15 @@ import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
 import Logo from '../Logo'
 
+const SearchButton = styled('button')`
+  font-family: Overpass;
+  padding: 0 30px;
+  border-radius: 0;
+  color: white;
+  font-size: 22px;
+  background: #5284ff;
+`
+
 const Searchbar = ({ onSearch, className, ...rest }) => {
   return (
     <Fragment>
@@ -16,9 +25,7 @@ const Searchbar = ({ onSearch, className, ...rest }) => {
       >
         <Logo />
         <Input name="searchfield" />
-        <Button type="submit" variant="contained" color="primary">
-          Search
-        </Button>
+        <SearchButton type="submit">Search</SearchButton>
       </form>
     </Fragment>
   )
