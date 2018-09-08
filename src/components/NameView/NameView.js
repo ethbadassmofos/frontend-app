@@ -4,11 +4,15 @@ import styled from 'styled-components'
 import Table from '../Table'
 import Card from '../Card'
 
-const NameView = ({ data }) => {
+const NameView = ({ data: { ensNode } }) => {
+  if (!ensNode) {
+    return null
+  }
+
   const {
-    ensNode: { node: { name }, resolverHistory, ownerHistory = [] }
-  } = data
-  console.log(data)
+    node: { name }, resolverHistory, ownerHistory = []
+  } = ensNode
+
   const massagedData = ownerHistory.map(item => {
     const array = Object.entries(item)
       .map(value => {
