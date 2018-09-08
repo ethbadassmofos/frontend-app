@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
 import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 
@@ -43,8 +43,8 @@ const getSearchQuery = (query) =>
 
 class SearchResult extends Component {
   render() {
-    const { props } = this;
-    const { query } = props;
+    const { props } = this
+    const { query } = props
     return (
       props.query && props.query.length > 0
         ?
