@@ -4,12 +4,11 @@ import styled from 'styled-components'
 import Table from '../Table'
 
 const NameView = ({ data }) => {
-  const { ensName: { name, ownerHistory} } = data
+  const { ensNode } = data
   return (
     <Fragment>
-      <Table columns={['name', 'owner', 'block', 'TxId']}/>
-      <div>{name}</div>
-      <div>{ownerHistory[0].address}</div>
+      {console.log(data)}
+      <Table columns={['name', 'owner', 'block', 'TxId']} />
     </Fragment>
   )
 }

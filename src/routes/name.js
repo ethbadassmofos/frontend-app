@@ -3,6 +3,7 @@ import ViewContainer from '../components/ViewContainer'
 import SearchResult from '../components/SearchResult'
 import styled from 'styled-components'
 import Consumer from '../GlobalState'
+import NameView from '../components/NameView'
 
 const Name = ({ match: { params }, style }) => (
   <Fill
@@ -14,7 +15,7 @@ const Name = ({ match: { params }, style }) => (
     <ViewContainer>
       NAME
       <Consumer>
-        {({ searchQuery }) => <SearchResult query={searchQuery} />}
+        {({ searchQuery }) => <NameView query={searchQuery} />}
       </Consumer>
     </ViewContainer>
   </Fill>

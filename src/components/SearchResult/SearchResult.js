@@ -5,13 +5,9 @@ import { Query } from 'react-apollo'
 import NameView from '../NameView'
 const ETH_ADDRESS_PATTERN = /^0x[a-fA-F0-9]{40}$/
 const GET_ENS_NAME_QUERY = gql`
-  query ensName($name: String) {
-    ensName(name: $name) {
-      name
-      ownerHistory {
-        address
-      }
-      resolverHistory {
+  query {
+    ensNode(name: "jefflau.eth") {
+      owner {
         address
       }
     }
