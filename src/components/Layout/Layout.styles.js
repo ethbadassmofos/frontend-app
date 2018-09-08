@@ -4,6 +4,7 @@ const styles = {
     position: 'relative',
     overflow: 'hidden',
     padding: '160px 0px 600px 0',
+    color: '#eee',
     textAlign: 'center',
     '&::before': {
       width: '100%',
