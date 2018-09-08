@@ -37,6 +37,7 @@ const Input = styled('input')`
   // width: calc(100% - 243px);
   width: calc(100% - 162px);
   border: none;
+  border-left: 2px solid #f0f6fa;
   font-size: 28px;
   font-family: Overpass;
   font-weight: 100;
