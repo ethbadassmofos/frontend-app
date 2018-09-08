@@ -8,12 +8,13 @@ const Searchbar = ({ onSearch, className, ...rest }) => {
     <Fragment>
       <form
         className={className}
+        autoComplete="off"
         onSubmit={e => {
           e.preventDefault()
           onSearch(e.target.searchfield.value)
         }}
       >
-        <TextField name="searchfield" />
+        <TextField className="text-field" name="searchfield" />
         <Button type="submit" variant="contained" color="primary">
           Search
         </Button>
@@ -22,6 +23,24 @@ const Searchbar = ({ onSearch, className, ...rest }) => {
   )
 }
 
-const styledSearchbar = styled(Searchbar)``
+const styledSearchbar = styled(Searchbar)`
+  display: flex;
+
+  .text-field {
+    flex-direction: column;
+    flex: 1 1 0;
+    margin-right: 5px;
+
+    ::after {
+      content: '.eth';
+      position: absolute;
+      font-size: 15px;
+      right: 0;
+      padding: 0px 5px 0 10px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  }
+`
 
 export default styledSearchbar

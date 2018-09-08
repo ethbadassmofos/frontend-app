@@ -12,8 +12,10 @@ class ViewContainer extends Component {
 }
 
 const styledViewContainer = styled(ViewContainer)`
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  min-height: 300px;
+  margin-top: 20px;
+  background: #4054b2;
 `
 
 export default styledViewContainer
