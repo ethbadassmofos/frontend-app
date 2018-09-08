@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import styled from 'styled-components'
 
-const Table = ({ data, className }, ...props) => {
+const Table = ({ data, className }) => {
   const labels = Object.keys(data[0])
 
   return (

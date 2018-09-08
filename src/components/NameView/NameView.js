@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import R from 'ramda'
 
 import Table from '../Table'
 

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { Query } from 'react-apollo'
-import NameView from './NameView'
 import gql from 'graphql-tag'
+import NameView from './NameView'
 
 const GET_ENS_NAME_QUERY = gql`
   query {

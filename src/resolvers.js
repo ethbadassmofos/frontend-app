@@ -36,7 +36,7 @@ const mockName2 = {
 
 const resolvers = {
   Query: {
-    ensName(_, { name }) {
+    ensName (_, { name }) {
       if (name === 'vitalik.eth') {
         return mockName
       }
@@ -44,13 +44,9 @@ const resolvers = {
     }
   },
   ensName: {
-    name: name => {
-      if (name.name === 'vitalik.eth') {
-        return 'huanzhang.eth'
-      } else {
-        return 'richard.eth'
-      }
-    }
+    name: name => (
+      (name.name === 'vitalik.eth') ? 'huanzhang.eth' : 'richard.eth'
+    )
   }
   // Mutation: {
   //   upvotePost(_, { postId }) {
