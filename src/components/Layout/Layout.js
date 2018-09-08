@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Social from '../Social/Social'
 import Searchbar from '../Searchbar'
 import SearchResult from '../SearchResult'
+import ViewContainer from '../ViewContainer'
 import styles from './Layout.styles'
 
 class Layout extends Component {
@@ -26,7 +27,10 @@ class Layout extends Component {
       <span className={classes.shape3} />
         <Grid container direction="column" className={classes.section}>
           <Searchbar onSearch={(searchQuery) => {console.log('SEEEEARCH', searchQuery); this.setState({ searchQuery })}} />
-          <SearchResult query={this.state.searchQuery}/>
+          <ViewContainer>
+            <SearchResult query={this.state.searchQuery}/>  
+          </ViewContainer>
+
         </Grid>
         <span className={classes.ornament} />
         <Social className={classes.social} />
