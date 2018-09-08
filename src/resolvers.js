@@ -16,11 +16,31 @@ const mockName = {
   ]
 }
 
+const mockName2 = {
+  label: 'jefflau',
+  parent: 'eth',
+  name: 'jefflau.eth',
+  ownerHistory: [
+    {
+      address: '0x4dfb3454fe2d80e92db48d4453eca87dfa580dd3',
+      block: 1
+    }
+  ],
+  resolverHistory: [
+    {
+      address: '0x4dfb3454fe2d80e92db48d4453eca87dfa580dd3',
+      block: 1
+    }
+  ]
+}
+
 const resolvers = {
   Query: {
-    ensName() {
-      console.log('in resovler')
-      return mockName
+    ensName(_, { name }) {
+      if (name === 'vitalik.eth') {
+        return mockName
+      }
+      return mockName2
     }
   }
   // Mutation: {
