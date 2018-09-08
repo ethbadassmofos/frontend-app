@@ -25,7 +25,7 @@ txId: String
 }
 
 type EnsNode {
-owner: Address,
+  owner: Address
   ownerHistory: [NodeEvent]
   resolverHistory: [Resolver]
 }

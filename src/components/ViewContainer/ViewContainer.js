@@ -15,7 +15,7 @@ const styledViewContainer = styled(ViewContainer)`
   width: 100%;
   min-height: 300px;
   margin-top: 20px;
-  background: #4054b2;
+  background: #fff;
 `
 
 export default styledViewContainer

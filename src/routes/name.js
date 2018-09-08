@@ -12,7 +12,6 @@ const Name = ({ match: { params }, style }) => (
     }}
   >
     <ViewContainer>
-      NAME
       <Consumer>
         {({ searchQuery }) => <SearchResult query={searchQuery} />}
       </Consumer>
