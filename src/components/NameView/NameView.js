@@ -4,66 +4,34 @@ import styled from 'styled-components'
 import Table from '../Table'
 
 const NameView = ({ data }) => {
-  // const { ensName: { name, ownerHistory, resolverHistory} } = data
+  const {
+    ensNode: { resolverHistory, ownerHistory = [] }
+  } = data
 
-  const mockResolverData = [
-    {
-      address: '0xbe2942e14cab5d7bfdc6f008d53445cda2dd8d0a',
-      block: 399111,
-      txId: '0xfasdfa2sadfgsadfasdasd',
-    },
-    {
-      address: '0xbe2942e14cab5d7bfdc6f008d53445cda2dd8d0a',
-      block: 399111,
-      txId: '0xfasdfa2sadfgsadfasdasd',
-    },
-    {
-      address: '0xbe2942e14cab5d7bfdc6f008d53445cda2dd8d0a',
-      block: 399111,
-      txId: '0xfasdfa2sadfgsadfasdasd',
-    }
-  ]
-  const columnData = [
-    {
-      node: {
-        name: 'hi.huanzhang.eth',
-        label: 'hi',
-        node: 'huanzhang.eth'
-      },
-      actor: '0xffff',
-      block: 309999,
-      tx: '0xfff',
-      action: 'bid'
-    },
-    {
-      node: {
-        name: 'sup.jefflau.eth',
-        label: 'hi',
-        node: 'jefflau.eth'
-      },
-      actor: '0x11233aff',
-      block: 399111,
-      tx: '0xfassdfsdfff',
-      action: 'buy'
-    },
-    {
-      node: {
-        name: 'hello.love.eth',
-        label: 'hello',
-        node: 'love.eth'
-      },
-      actor: '0xffffasss',
-      block: 211145,
-      tx: '0xfffasss',
-      action: 'asdfjkasdj'
-    }
-  ]
-  const { ensNode } = data
+  const massagedData = ownerHistory.map(item => {
+    const array = Object.entries(item)
+      .map(value => {
+        if (value[0] === 'node') {
+          return [value[0], value[1].nameHash]
+        }
+
+        if (value[0] === 'actor') {
+          return [value[0], value[1].address]
+        }
+        return value
+      })
+      .filter(value => value[0] !== '__typename')
+
+    return array.reduce((acc, curr) => {
+      acc[curr[0]] = curr[1]
+      return acc
+    }, {})
+  })
+
   return (
     <Fragment>
-      <Table data={columnData}/>
-      <Table data={mockResolverData} />
-      {console.log(ensNode)}
+      <Table data={massagedData} />
+      {resolverHistory === null ? '' : <Table data={resolverHistory} />}
     </Fragment>
   )
 }

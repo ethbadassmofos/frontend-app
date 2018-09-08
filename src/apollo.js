@@ -14,8 +14,8 @@ import fetch from 'unfetch'
 // })
 
 const endpoints = {
-  simple: 'https://ens-index-dot-ensplorer.appspot.com/graphql',
-  // ws: 'wss://us1.prisma.sh/nevena-djaja/hello-hacker/dev'
+  simple: 'https://ens-index-dot-ensplorer.appspot.com/graphql' //'https://ensplorer.appspot.com:4000'
+  //ws: 'wss://us1.prisma.sh/nevena-djaja/hello-hacker/dev'
 }
 
 export const apolloClient = new ApolloClient({
