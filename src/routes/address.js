@@ -1,10 +1,10 @@
 import React from 'react'
-import ViewContainer from '../components/ViewContainer'
 import styled from 'styled-components'
+import ViewContainer from '../components/ViewContainer'
 import SearchResult from '../components/SearchResult'
 import Consumer from '../GlobalState'
 
-const Address = ({ match: { params }, style }) => (
+const Address = ({ match: { params = {} }, style }) => (
   <Fill
     className="fill"
     style={{
@@ -13,7 +13,7 @@ const Address = ({ match: { params }, style }) => (
   >
     <ViewContainer>
       <Consumer>
-        {({ searchQuery }) => <SearchResult query={searchQuery} />}
+        {() => <SearchResult query={params.address} />}
       </Consumer>
     </ViewContainer>
   </Fill>
