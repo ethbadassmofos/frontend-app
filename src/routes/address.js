@@ -1,11 +1,11 @@
 import React from 'react'
-import ViewContainer from '../components/ViewContainer'
 import styled from 'styled-components'
+import ViewContainer from '../components/ViewContainer'
 import SearchResult from '../components/SearchResult'
 import Consumer from '../GlobalState'
 import AddressView from '../components/AddressView/'
 
-const Address = ({ match: { params }, style }) => (
+const Address = ({ match: { params = {} }, style }) => (
   <Fill
     className="fill"
     style={{

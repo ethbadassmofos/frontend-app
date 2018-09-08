@@ -31,6 +31,7 @@
     "brace-style": 0,
     "react/jsx-uses-vars": 2,
     "react/jsx-uses-react": 2,
+    "prefer-destructuring": 0,
     "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}]
   },
   "settings": {

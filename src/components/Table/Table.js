@@ -13,17 +13,15 @@ const Table = ({ data, className }) => {
   )
 }
 
-const ColumnData = ({ data }) => {
-  return data.map(item => {
-    return (
-      <Row>
-        {Object.values(item).map(value => {
-          return <RowItem>{value}</RowItem>
-        })}
-      </Row>
-    )
-  })
-}
+const ColumnData = ({ data }) => (
+  (data || []).map(item => (
+    <Row>
+      {Object.values(item || {}).map(value => (
+        <RowItem>{value}</RowItem>
+      ))}
+    </Row>
+  ))
+)
 
 const ColumnLabels = ({ labels }) => (
   <LabelContainer>

@@ -4,7 +4,7 @@ import ViewContainer from '../components/ViewContainer'
 import Consumer from '../GlobalState'
 import NameView from '../components/NameView'
 
-const Name = ({ style }) => (
+const Name = ({ match: { params = {} }, style }) => (
   <Fill
     className="fill"
     style={{
@@ -13,7 +13,7 @@ const Name = ({ style }) => (
   >
     <ViewContainer>
       <Consumer>
-        {({ searchQuery }) => <NameView query={searchQuery} />}
+        {() => <NameView query={params.name} />}
       </Consumer>
     </ViewContainer>
   </Fill>

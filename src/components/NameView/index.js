@@ -4,8 +4,8 @@ import gql from 'graphql-tag'
 import NameView from './NameView'
 
 const GET_ENS_NAME_QUERY = gql`
-  query {
-    ensNode(name: "jefflau.eth") {
+  query ($name: String!) {
+    ensNode(name: $name) {
       node {
         name
         nameHash
@@ -35,8 +35,8 @@ const GET_ENS_NAME_QUERY = gql`
   }
 `
 
-const NameViewContainer = ({ searchQuery }) => (
-  <Query query={GET_ENS_NAME_QUERY} variables={{ name: searchQuery }}>
+const NameViewContainer = ({ query: name }) => (
+  <Query query={GET_ENS_NAME_QUERY} variables={{ name }}>
     {({ loading, error, data }) => {
       if (loading) return 'Loading...'
       if (error) return `Error! ${error.message}`
