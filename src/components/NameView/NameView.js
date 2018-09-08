@@ -5,7 +5,7 @@ import R from 'ramda'
 import Table from '../Table'
 
 const NameView = ({ data }) => {
-  const { ensName: { name, ownerHistory, resolverHistory} } = data
+  // const { ensName: { name, ownerHistory, resolverHistory} } = data
 
   const mockResolverData = [
     {
