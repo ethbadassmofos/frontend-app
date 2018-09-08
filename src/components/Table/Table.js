@@ -53,6 +53,13 @@ const RowItem = styled(LabelItem)`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  position: relative;
+  transition: 0.2s;
+
+  &:hover {
+    text-overflow: initial;
+    overflow: visible;
+  }
 `
 
 const LabelContainer = styled('div')`
