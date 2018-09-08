@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ethbadassmofos/frontend-app.svg?branch=master)](https://travis-ci.org/ethbadassmofos/frontend-app)
 
-Live:
+Live: https://ensplorer.surge.sh
 
 ## Build and run
 
