@@ -21,12 +21,12 @@ type Resolver {
   txId: String
 }
 
-query ensName(){
+query ensName(name: String){
 	ownerHistory: [Owner]
   resolverHistory: [Resolver]
 }
 
-query ethereumAddress{
+query ethereumAddress(address: String){
 	names: [Name]
   namesOwned: Int
 }
