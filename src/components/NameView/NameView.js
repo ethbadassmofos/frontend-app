@@ -12,19 +12,26 @@ const NameView = ({ data }) => {
   const massagedData = ownerHistory.map(item => {
     const array = Object.entries(item)
       .map(value => {
-        if (value[0] === 'node') {
-          return [ value[0], value[1].nameHash ]
+        switch (value[0]) {
+          case 'node': {
+            value = [ value[0], value[1].nameHash ]
+            break
+          }
+          case 'actor': {
+            value = [ value[0], value[1].address, { type: 'address' } ]
+            break
+          }
+          default: {
+            value.push({ type: value[0] })
+          }
         }
 
-        if (value[0] === 'actor') {
-          return [ value[0], value[1].address ]
-        }
         return value
       })
       .filter(value => value[0] !== '__typename')
 
     return array.reduce((acc, curr) => {
-      acc[curr[0]] = curr[1]
+      acc[curr[0]] = { value: curr[1], options: curr[2] || {} }
       return acc
     }, {})
   })
