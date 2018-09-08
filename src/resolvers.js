@@ -42,6 +42,15 @@ const resolvers = {
       }
       return mockName2
     }
+  },
+  ensName: {
+    name: name => {
+      if (name.name === 'vitalik.eth') {
+        return 'huanzhang.eth'
+      } else {
+        return 'richard.eth'
+      }
+    }
   }
   // Mutation: {
   //   upvotePost(_, { postId }) {
