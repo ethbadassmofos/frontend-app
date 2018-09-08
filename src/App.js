@@ -2,7 +2,7 @@ import React, { createContext, Component } from 'react'
 import ReactDOM from 'react-dom'
 import { Transition, config } from 'react-spring'
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   Link,
@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import Searchbar from './components/Searchbar'
 import Name from './routes/name'
 import Address from './routes/address'
-import { GlobalProvider } from './GlobalState'
+import Consumer, { GlobalProvider } from './GlobalState'
 
 const App = () => (
   <GlobalProvider>
@@ -20,16 +20,14 @@ const App = () => (
       <Route
         render={({ location }) => (
           <div className="fill">
-            <Route
+            {/* <Route
               exact
               path="/"
               render={() => <Redirect to="/hsl/10/90/50" />}
-            />
-            <Searchbar />
-            <ul className="nav">
-              <NavLink to="/hsl/10/90/50">Red</NavLink>
-              <NavLink to="/hsl/120/100/40">Green</NavLink>
-            </ul>
+            /> */}
+            <Consumer>
+              {({ onSearch }) => <Searchbar onSearch={onSearch} />}
+            </Consumer>
             <div className="content">
               <Transition
                 config={config.slow}
@@ -42,12 +40,12 @@ const App = () => (
                   <Switch location={location}>
                     <Route
                       exact
-                      path="/hsl/:h/:s/:l"
+                      path="/name/:name"
                       render={props => Name({ ...props, style })}
                     />
                     <Route
                       exact
-                      path="/rgb/:r/:g/:b"
+                      path="/address/:address"
                       render={props => Address({ ...props, style })}
                     />
                     <Route render={() => <div>Not Found</div>} />

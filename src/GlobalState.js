@@ -1,15 +1,17 @@
 import React, { createContext, Component } from 'react'
+import { withRouter } from 'react-router'
 
 const GlobalContext = createContext({})
 const GlobalConsumer = GlobalContext.Consumer
 
-export class GlobalProvider extends Component {
+class Provider extends Component {
   state = {
     searchQuery: null
   }
 
   onSearch = searchQuery => {
     console.log('SEEEEARCH', searchQuery)
+    this.props.history.push(`/name/${searchQuery}`)
     this.setState({ searchQuery })
   }
 
@@ -26,5 +28,9 @@ export class GlobalProvider extends Component {
     )
   }
 }
+
+const GlobalProviderWithRouter = withRouter(Provider)
+
+export { GlobalProviderWithRouter as GlobalProvider }
 
 export default GlobalConsumer

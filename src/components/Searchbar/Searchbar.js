@@ -25,6 +25,8 @@ const Searchbar = ({ onSearch, className, ...rest }) => {
 
 const styledSearchbar = styled(Searchbar)`
   display: flex;
+  position: relative;
+  z-index: 1000;
 
   .text-field {
     flex-direction: column;
