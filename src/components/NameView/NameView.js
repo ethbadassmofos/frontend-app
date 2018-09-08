@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import R from 'ramda'
 
 import Table from '../Table'
 
@@ -24,7 +23,6 @@ const NameView = ({ data }) => {
       txId: '0xfasdfa2sadfgsadfasdasd',
     }
   ]
-  const mockName = 'ASSHOLEJEFF'
   const columnData = [
     {
       node: {

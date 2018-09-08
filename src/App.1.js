@@ -20,7 +20,7 @@ const GET_ENS_NAME = gql`
 `
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <Query query={GET_ENS_NAME} variables={{ name: 'jefflau.eth' }}>
         {({ loading, error, data }) => {

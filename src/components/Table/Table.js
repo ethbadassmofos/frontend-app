@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react'
 
 import styled from 'styled-components'
 
-const Table = ({ data, className }, ...props) => {
+const Table = ({ data, className }) => {
   const labels = Object.keys(data[0])
 
   return (
@@ -13,9 +13,9 @@ const Table = ({ data, className }, ...props) => {
   )
 }
 
-const ColumnData = ({ data }) => {
-  return data.map(item => {
-    return <Row>
+const ColumnData = ({ data }) => (
+  data.map(item => (
+    <Row>
       {
         Object.entries(item).map(value => {
           if (value[0] === 'node') {
@@ -25,10 +25,10 @@ const ColumnData = ({ data }) => {
         })
       }
     </Row>
-  })
-}
+  ))
+)
 
-const ColumnLabels = ({labels}) => (
+const ColumnLabels = ({ labels }) => (
   <LabelContainer>
     {labels.map(label => (
       <LabelItem key={label}>{label}</LabelItem>

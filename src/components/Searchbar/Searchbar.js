@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react'
-import Button from '@material-ui/core/Button'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Logo from '../Logo'
 
@@ -12,24 +11,22 @@ const SearchButton = styled('button')`
   background: #5284ff;
 `
 
-const Searchbar = ({ onSearch, className, ...rest }) => {
-  return (
-    <Fragment>
-      <form
-        className={className}
-        autoComplete="off"
-        onSubmit={e => {
-          e.preventDefault()
-          onSearch(e.target.searchfield.value)
-        }}
-      >
-        <Logo />
-        <Input name="searchfield" />
-        <SearchButton type="submit">Search</SearchButton>
-      </form>
-    </Fragment>
-  )
-}
+const Searchbar = ({ onSearch, className }) => (
+  <Fragment>
+    <form
+      className={className}
+      autoComplete="off"
+      onSubmit={e => {
+        e.preventDefault()
+        onSearch(e.target.searchfield.value)
+      }}
+    >
+      <Logo />
+      <Input name="searchfield" />
+      <SearchButton type="submit">Search</SearchButton>
+    </form>
+  </Fragment>
+)
 
 const Input = styled('input')`
   width: 100%;

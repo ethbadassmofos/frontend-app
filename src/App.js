@@ -1,14 +1,9 @@
-import React, { createContext, Component } from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react'
 import { Transition, config } from 'react-spring'
 import {
-  BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  Redirect
+  Route
 } from 'react-router-dom'
-import styled from 'styled-components'
 import Searchbar from './components/Searchbar'
 import Name from './routes/name'
 import Address from './routes/address'
@@ -51,12 +46,6 @@ const App = () => (
       )}
     />
   </GlobalProvider>
-)
-
-const NavLink = props => (
-  <li className="navItem">
-    <Link {...props} style={{ cursor: 'pointer', color: 'inherit' }} />
-  </li>
 )
 
 export default App

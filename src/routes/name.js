@@ -1,11 +1,10 @@
 import React from 'react'
-import ViewContainer from '../components/ViewContainer'
-import SearchResult from '../components/SearchResult'
 import styled from 'styled-components'
+import ViewContainer from '../components/ViewContainer'
 import Consumer from '../GlobalState'
 import NameView from '../components/NameView'
 
-const Name = ({ match: { params }, style }) => (
+const Name = ({ style }) => (
   <Fill
     className="fill"
     style={{
