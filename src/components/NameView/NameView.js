@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 
 import Table from '../Table'
+import Card from '../Card'
 
 const NameView = ({ data }) => {
   const {
@@ -12,11 +13,11 @@ const NameView = ({ data }) => {
     const array = Object.entries(item)
       .map(value => {
         if (value[0] === 'node') {
-          return [value[0], value[1].nameHash]
+          return [ value[0], value[1].nameHash ]
         }
 
         if (value[0] === 'actor') {
-          return [value[0], value[1].address]
+          return [ value[0], value[1].address ]
         }
         return value
       })
@@ -40,14 +41,6 @@ const NameView = ({ data }) => {
     </Fragment>
   )
 }
-
-const Card = styled('div')`
-  width: 90%;
-  background: #fff;
-  margin: 64px auto 0;
-  padding: 25px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-`
 
 const Label = styled('label')`
   font-size: 20px;

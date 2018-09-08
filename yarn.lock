@@ -6258,15 +6258,9 @@ raf@3.4.0:
   dependencies:
     performance-now "^2.1.0"
 
-<<<<<<< HEAD
 ramda@^0.23.0:
   version "0.23.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.23.0.tgz#ccd13fff73497a93974e3e86327bfd87bd6e8e2b"
-=======
-ramda@^0.25.0:
-  version "0.25.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
->>>>>>> 10c3864ded2b8b4767653d3a47ee47f8fb458d09
 
 randomatic@^3.0.0:
   version "3.1.0"
