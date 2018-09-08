@@ -4,8 +4,11 @@ import gql from 'graphql-tag'
 import NameView from './NameView'
 
 const GET_ENS_NAME_QUERY = gql`
-  query ($name: String!) {
+  query($name: String!) {
     ensNode(name: $name) {
+      # resolver @client
+      addr @client
+      # content @client
       node {
         name
         nameHash

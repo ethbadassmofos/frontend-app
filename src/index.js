@@ -10,7 +10,7 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 
 window.addEventListener('load', () => {
-  setupEthers()
+  setupEthers('mainnet')
   ReactDOM.render(
     <MuiThemeProvider theme={createMuiTheme({ palette: { type: 'dark' } })}>
       <BrowserRouter>

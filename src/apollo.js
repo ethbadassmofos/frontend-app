@@ -1,17 +1,6 @@
-import ApolloClient from 'apollo-client'
-import { HttpLink } from 'apollo-link-http'
+import ApolloClient from 'apollo-boost'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-// import { SchemaLink } from 'apollo-link-schema'
-import fetch from 'unfetch'
-// import typeDefs from './types'
-// import resolvers from './resolvers'
-
-// import { makeExecutableSchema } from 'graphql-tools'
-
-// const schema = makeExecutableSchema({
-//   typeDefs,
-//   resolvers
-// })
+import resolvers, { defaults } from './rootResolvers'
 
 const endpoints = {
   simple: 'https://ens-index-dot-ensplorer.appspot.com/graphql' //'https://ensplorer.appspot.com:4000'
@@ -20,6 +9,10 @@ const endpoints = {
 
 export const apolloClient = new ApolloClient({
   // link: new SchemaLink({ schema }),
-  link: new HttpLink({ uri: endpoints.simple, fetch }),
+  clientState: {
+    defaults,
+    resolvers
+  },
+  uri: endpoints.simple,
   cache: new InMemoryCache()
 })

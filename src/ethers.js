@@ -30,6 +30,7 @@ export async function setupEthers(network = 'mainnet') {
     // Allow read-only access to the blockchain if no Mist/Metamask/EthersWallet
     provider = ethers.providers.getDefaultProvider(network)
   }
+  console.log(ethers, provider)
   return provider
 }
 
