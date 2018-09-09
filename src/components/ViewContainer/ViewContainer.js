@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 class ViewContainer extends Component {
-  render() {
+  render () {
     return (
       <div className={this.props.className}>
         {this.props.children}

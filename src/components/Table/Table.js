@@ -86,16 +86,16 @@ const ShowMore = styled('div')`
   }
 `
 
-const ColumnData = ({ data }) =>
-  (data || []).map(item => (
-    <Row>
+const ColumnData = ({ data }) => (
+  (data || []).map((item, i) => (
+    <Row key={i}>
       {Object.values(item || {}).map(({ value, options = {} }) => (
         <RowItem>
           <ChainValue type={options.type} value={value} />
         </RowItem>
       ))}
     </Row>
-  ))
+  )))
 
 const ColumnLabels = ({ labels }) => (
   <LabelContainer>
