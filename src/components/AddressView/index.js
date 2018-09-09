@@ -38,7 +38,7 @@ const AddressViewContainer = ({ query }) => (
 
       return (
         <Fragment>
-          <AddressView data={data} />
+          <AddressView data={data} address={query}/>
         </Fragment>
       )
     }}
