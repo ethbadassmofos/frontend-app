@@ -20,7 +20,7 @@ const Searchbar = ({ onSearch, className }) => (
         e.preventDefault()
 
         // strip '.eth' from the end
-        let { value } = e.target.searchfield.toLowerCase()
+        let { value } = e.target.searchfield
         if (value.toLowerCase().endsWith('.eth')) {
           value = value.substr(0, value.length - 4)
         }
