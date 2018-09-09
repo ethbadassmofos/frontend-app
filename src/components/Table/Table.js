@@ -8,7 +8,7 @@ class Table extends React.Component {
   state = {
     limit: 25
   }
-  render() {
+  render () {
     const { data, className, paging = false } = this.props
     let slicedData
     if (paging) {
@@ -50,9 +50,9 @@ const ShowMore = styled('div')`
 const ColumnData = ({ data }) =>
   (data || []).map(item => (
     <Row>
-      {Object.values(item || {}).map(({ value, options: { type } }) => (
+      {Object.values(item || {}).map(({ value, options = {} }) => (
         <RowItem>
-          <ChainValue type={type} value={value} />
+          <ChainValue type={options.type} value={value} />
         </RowItem>
       ))}
     </Row>
