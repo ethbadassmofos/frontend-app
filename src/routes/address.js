@@ -4,7 +4,7 @@ import ViewContainer from '../components/ViewContainer'
 import Consumer from '../GlobalState'
 import AddressView from '../components/AddressView/'
 
-const Address = ({ style }) => (
+const Address = ({ match: { params = {} }, style }) => (
   <Fill
     className="fill"
     style={{
@@ -13,7 +13,7 @@ const Address = ({ style }) => (
   >
     <ViewContainer>
       <Consumer>
-        {({ searchQuery }) => <AddressView query={searchQuery} />}
+        {({ searchQuery }) => <AddressView query={params.address} />}
       </Consumer>
     </ViewContainer>
   </Fill>

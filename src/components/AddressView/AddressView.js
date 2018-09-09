@@ -14,8 +14,8 @@ const AddressView = ({ data }) => {
 
   return (
     <Fragment>
-      <Table data={massagedData} />
-      <Table data={nodeData} />
+      <Table data={nodeData} paging={true} />
+      <Table data={massagedData} paging={true} />
     </Fragment>
   )
 }

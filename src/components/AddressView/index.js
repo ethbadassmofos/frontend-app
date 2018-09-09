@@ -30,11 +30,8 @@ const GET_ETHEREUM_ADDRESS = gql`
   }
 `
 
-const AddressViewContainer = ({ searchQuery }) => (
-  <Query
-    query={GET_ETHEREUM_ADDRESS}
-    variables={{ address: '0xdbfeeef46e9cc06136c3da02a9799bccc125bb39' }}
-  >
+const AddressViewContainer = ({ query }) => (
+  <Query query={GET_ETHEREUM_ADDRESS} variables={{ address: query }}>
     {({ loading, error, data }) => {
       if (loading) return 'Loading...'
       if (error) return `Error! ${error.message}`
