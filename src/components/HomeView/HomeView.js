@@ -11,7 +11,7 @@ const HomeView = ({ data: { ownerStats } }) => {
   return (
     <Fragment>
       <Card>
-        <Table data={massagedData} />
+        <Table data={massagedData} paging={true} />
       </Card>
     </Fragment>
   )
