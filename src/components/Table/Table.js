@@ -4,18 +4,50 @@ import styled from 'styled-components'
 
 import ChainValue from '../ChainValue'
 
-const Table = ({ data, className }) => {
-  const labels = Object.keys(data[0])
+class Table extends React.Component {
+  state = {
+    limit: 25
+  }
+  render() {
+    const { data, className, paging = false } = this.props
+    let slicedData
+    if (paging) {
+      slicedData = data.slice(0, this.state.limit)
+    }
+    const labels = Object.keys(data[0])
 
-  return (
-    <div className={className}>
-      <ColumnLabels labels={labels} />
-      <ColumnData data={data} />
-    </div>
-  )
+    return (
+      <div className={className}>
+        <ColumnLabels labels={labels} />
+        <ColumnData data={paging ? slicedData : data} />
+        {paging && (
+          <ShowMore
+            onClick={() =>
+              this.setState(state => ({ limit: state.limit + 25 }))
+            }
+          >
+            Show more
+          </ShowMore>
+        )}
+      </div>
+    )
+  }
 }
 
-const ColumnData = ({ data }) => (
+const ShowMore = styled('div')`
+  color: white;
+  text-align center;
+  font-weight: 900;
+  text-transform: uppercase;
+  width: 100%;
+  background: #5284ff;
+  padding: 20px;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const ColumnData = ({ data }) =>
   (data || []).map(item => (
     <Row>
       {Object.values(item || {}).map(({ value, options: { type } }) => (
@@ -25,7 +57,6 @@ const ColumnData = ({ data }) => (
       ))}
     </Row>
   ))
-)
 
 const ColumnLabels = ({ labels }) => (
   <LabelContainer>
