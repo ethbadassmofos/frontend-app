@@ -3,30 +3,18 @@ import styled from 'styled-components'
 
 import Table from '../Table'
 import Card from '../Card'
+import { processNodeEventData } from '../../utils/table'
 
-const NameView = ({ data }) => {
+const NameView = ({ data: { ensNode } }) => {
+  if (!ensNode) {
+    return null
+  }
+
   const {
-    ensNode: { node: { name }, resolverHistory, ownerHistory = [] }
-  } = data
-  const massagedData = ownerHistory.map(item => {
-    const array = Object.entries(item)
-      .map(value => {
-        if (value[0] === 'node') {
-          return [ value[0], value[1].nameHash ]
-        }
+    node: { name }, resolverHistory, ownerHistory = []
+  } = ensNode
 
-        if (value[0] === 'actor') {
-          return [ value[0], value[1].address ]
-        }
-        return value
-      })
-      .filter(value => value[0] !== '__typename')
-
-    return array.reduce((acc, curr) => {
-      acc[curr[0]] = curr[1]
-      return acc
-    }, {})
-  })
+  const massagedData = processNodeEventData(ownerHistory)
 
   return (
     <Fragment>

@@ -2,6 +2,8 @@ import React from 'react'
 
 import styled from 'styled-components'
 
+import ChainValue from '../ChainValue'
+
 const Table = ({ data, className }) => {
   const labels = Object.keys(data[0])
 
@@ -16,8 +18,10 @@ const Table = ({ data, className }) => {
 const ColumnData = ({ data }) => (
   (data || []).map(item => (
     <Row>
-      {Object.values(item || {}).map(value => (
-        <RowItem>{value}</RowItem>
+      {Object.values(item || {}).map(({ value, options: { type } }) => (
+        <RowItem>
+          <ChainValue type={type} value={value} />
+        </RowItem>
       ))}
     </Row>
   ))

@@ -14,3 +14,8 @@ deploy:
   domain: ensplorer.surge.sh
   on:
     branch: master
+notifications:
+  email:
+    - ram@hiddentao.com
+    - jeff-lau@live.com
+    - huanzhang30@gmail.com
