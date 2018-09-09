@@ -8,7 +8,7 @@ const globalStyles = injectGlobal`
     color: #5284ff;
   }
   body {
-    font-family: Overpass;
+    font-family: Overpass, Arial, sans-serif;
     background: #F0F6FA;
   }
 `
