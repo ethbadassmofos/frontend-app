@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import Table from '../Table'
 import Card from '../Card'
+import { Label, LabelValue } from '../Label'
 import { processNodeEventData } from '../../utils/table'
 
 const NameView = ({ data: { ensNode } }) => {
@@ -23,7 +24,7 @@ const NameView = ({ data: { ensNode } }) => {
         <Label>{`ENS name `}</Label><LabelValue>{`- ${name}`}</LabelValue>
         </div>
         <div>
-          <Label>{`Resolve-to-address `}</Label><LabelValue>{`- ${addr || 'Resolver not set'}`}</LabelValue>
+          <Label>{`Resolve-to-address `}</Label><LabelValue>{`- ${addr || 'Address not set'}`}</LabelValue>
         </div>
       </Card>
       <Card>
@@ -34,25 +35,6 @@ const NameView = ({ data: { ensNode } }) => {
     </Fragment>
   )
 }
-
-const Label = styled('label')`
-  font-size: 20px;
-  color: #2f2833;
-  font-weight: 700;
-  line-height: 1.35;
-  font-family: Avenir;
-  padding: 0;
-  display: inline;
-  text-align: center;
-
-  &.center {
-    display: block;
-  }
-`
-
-const LabelValue = styled(Label)`
-  font-weight: 400;
-`
 
 const styledNameView = styled(NameView)`
   display: flex;

@@ -3,8 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import ChainValue from '../ChainValue'
-import decryptHashes from '../../preimage'
-import R from 'ramda'
+// import decryptHashes from '../../preimage'
+// import R from 'ramda'
 
 class Table extends React.Component {
   state = {
