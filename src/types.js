@@ -1,41 +1,52 @@
 const typeDefs = `
+type Address {
+	address: String
+}
 
+type Node {
+  name: String
+	nameHash: String
+  label: String
+  node: String
+	subNodes: [Node]
+}
 
-  type Name {
-    name: String # awesome.jefflau.eth
-    label: String # awesome
-    node: String # jefflau.eth
-    subDomains: [Name]
-  }
+type NodeEvent {
+	node: Node
+	actor: Address
+  block: Int
+	tx: String
+	action: String
+}
 
-  type Owner {
-    address: String
-    block: Int
-    txId: String
-  }
+type Resolver {
+  address: String
+  block: Int
+  txId: String
+}
 
-  type Resolver {
-    address: String
-    block: Int
-    txId: String
-  }
+type EnsNode {
+	node: Node,
+  owner: Address,
+	ownerHistory: [NodeEvent]
+	resolverHistory: [Resolver]
+}
 
-  type ensName {
-    name: String
-    label: String
-    nodeHash: String
-    node: String
-    ownerHistory: [Owner]
-    resolverHistory: [Resolver]
-  }
+type EthereumAddress {
+	nodeHistory: [NodeEvent]
+	nodes: [Node]
+}
 
-  type Query {
-    ensName(name: String): ensName
-  }
+type OwnerStat {
+	owner: Address
+	nodesOwned: Int
+}
 
-  schema {
-    query: Query
-  }
+type Query {
+	ensNode(name: String!): EnsNode
+	ethereumAddress(address: String!): EthereumAddress
+	ownerStats(limit: Int): [OwnerStat]
+}
 `
 
 export default typeDefs

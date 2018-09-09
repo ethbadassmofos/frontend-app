@@ -8,7 +8,7 @@ export const processNodeEventData = history => {
             break
           }
           case 'actor': {
-            value = [value[0], value[1].address, { type: 'address' }]
+            value = [value[0], value[1].address, { type: 'address-in-app' }]
             break
           }
           default: {
@@ -40,3 +40,9 @@ export const processNodeData = nodes =>
       return ret
     }, {})
   )
+
+export const processOwnerStats = stats =>
+  stats.map(stat => ({
+    address: { value: stat.owner.address, options: { type: 'address-in-app' } },
+    nodesOwned: { value: stat.nodesOwned }
+  }))
