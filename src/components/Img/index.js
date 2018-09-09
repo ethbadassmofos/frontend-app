@@ -4,9 +4,9 @@ import styled from 'styled-components'
 import tiger from '../../assets/tiger.png'
 
 const images = {
-  tiger: {
+  reverseResolution: {
     img: tiger,
-    title: 'Cool cat!'
+    title: 'Reverse resolution available!'
   }
 }
 

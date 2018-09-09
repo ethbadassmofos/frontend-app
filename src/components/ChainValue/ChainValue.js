@@ -60,7 +60,7 @@ class AddressInApp extends PureComponent {
         {resolvedName => (
           <span>
             {resolvedName ? (
-              <Img id='tiger' width='20px' style={{
+              <Img id='reverseResolution' width='20px' style={{
                 position: 'absolute',
                 left: 0,
                 top: '60%',
