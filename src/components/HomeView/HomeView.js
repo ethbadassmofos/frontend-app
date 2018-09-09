@@ -30,7 +30,6 @@ const HomeView = ({ data: { ownerStats } }) => {
     }
   }))
 
-  console.log(massagedData)
   return (
     <Fragment>
       <Card>
