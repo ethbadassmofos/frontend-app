@@ -97,8 +97,8 @@ const ColumnData = ({ data }) =>
       key={i}
       squatPercent={(item.squatLevel && item.squatLevel.percent) || ''}
     >
-      {Object.values(item || {}).map(({ value, options = {} }) => (
-        <RowItem>
+      {Object.values(item || {}).map(({ value, options = {} }, j) => (
+        <RowItem key={j}>
           <ChainValue type={options.type} value={value} />
         </RowItem>
       ))}
