@@ -12,7 +12,7 @@ function getEthers() {
   }
 }
 
-export async function setupEthers(network = 'mainnet') {
+export async function setupEthers (network = 'mainnet') {
   if (typeof window.web3 !== undefined) {
     if (network === 'rinkeby') {
       ethers.providers.networks.rinkeby.ensAddress =

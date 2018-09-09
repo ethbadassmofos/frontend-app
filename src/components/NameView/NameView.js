@@ -3,38 +3,26 @@ import styled from 'styled-components'
 
 import Table from '../Table'
 import Card from '../Card'
+import { processNodeEventData } from '../../utils/table'
 
-const NameView = ({ data }) => {
+const NameView = ({ data: { ensNode } }) => {
+  if (!ensNode) {
+    return null
+  }
+
   const {
-    ensNode: { node: { name }, resolverHistory, ownerHistory = [] }
-  } = data
-  console.log(data)
-  const massagedData = ownerHistory.map(item => {
-    const array = Object.entries(item)
-      .map(value => {
-        if (value[0] === 'node') {
-          return [ value[0], value[1].nameHash ]
-        }
+    node: { name }, owner: { address }, resolverHistory, ownerHistory = []
+  } = ensNode
 
-        if (value[0] === 'actor') {
-          return [ value[0], value[1].address ]
-        }
-        return value
-      })
-      .filter(value => value[0] !== '__typename')
-
-    return array.reduce((acc, curr) => {
-      acc[curr[0]] = curr[1]
-      return acc
-    }, {})
-  })
+  const massagedData = processNodeEventData(ownerHistory)
 
   return (
     <Fragment>
       <Card>
-        <Label>{`ENS Name - ${name}`}</Label>
+        <Label>{`${name} - ${address}`}</Label>
       </Card>
       <Card>
+        <Label textAlign="center">Ownership History</Label>
         <Table data={massagedData} />
       </Card>
       {resolverHistory === null ? '' : <Table data={resolverHistory} />}
@@ -47,8 +35,10 @@ const Label = styled('label')`
   color: #2f2833;
   font-weight: 700;
   line-height: 1.35;
+  font-family: Avenir;
   padding: 0;
   display: block;
+  text-align: ${props => props.textAlign || 'left'};
 `
 const styledNameView = styled(NameView)`
   display: flex;

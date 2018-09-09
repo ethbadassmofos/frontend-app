@@ -4,7 +4,7 @@ import ViewContainer from '../components/ViewContainer'
 import Consumer from '../GlobalState'
 import AddressView from '../components/AddressView/'
 
-const Address = ({ match: { params = {} }, style }) => (
+const Address = ({ style }) => (
   <Fill
     className="fill"
     style={{
