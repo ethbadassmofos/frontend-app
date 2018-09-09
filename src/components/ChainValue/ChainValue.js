@@ -74,12 +74,12 @@ class AddressInApp extends PureComponent {
                 top: '60%',
                 transform: 'translateY(-50%)'
               }} tooltip={(
-                <a style={{ 'margin-left': '0.5em' }} title='View stats for this name' href={`/name/${resolvedName}`}>{resolvedName}</a>
+                <a style={{ 'marginLeft': '0.5em' }} title='View stats for this name' href={`/name/${resolvedName}`}>{resolvedName}</a>
               )}/>
             ) : null}
             <a
               title='View stats for this address' href={`/address/${value}`}
-              style={{ 'font-family': 'Overpass Mono, monospace' }}
+              style={{ 'fontFamily': 'Overpass Mono, monospace' }}
             >
               {value}
             </a>
