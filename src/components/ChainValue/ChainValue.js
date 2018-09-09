@@ -1,39 +1,97 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+
+import { provider } from '../../ethers'
 
 const VIEW_ON_ETHERSCAN = 'View on Etherscan'
 
-const Tx = ({ value, children }) => (
-  <a title={VIEW_ON_ETHERSCAN} href={`https://etherscan.io/tx/${value}`}>{children}</a>
+const Tx = ({ value }) => (
+  <a title={VIEW_ON_ETHERSCAN} href={`https://etherscan.io/tx/${value}`}>{value}</a>
 )
 
-const Block = ({ value, children }) => (
-  <a title={VIEW_ON_ETHERSCAN} href={`https://etherscan.io/block/${value}`}>{children}</a>
+const Block = ({ value }) => (
+  <a title={VIEW_ON_ETHERSCAN} href={`https://etherscan.io/block/${value}`}>{value}</a>
 )
 
-const Address = ({ value, children }) => (
-  <a title={VIEW_ON_ETHERSCAN} href={`https://etherscan.io/address/${value}`}>{children}</a>
-)
 
-const AddressInApp = ({ value, children }) => (
-  <a title={'View stats for this address'} href={`/address/${value}`}>{children}</a>
-)
+class Address extends PureComponent {
+  state = {
+    resolvedName: null
+  }
 
-export default class ChainValue extends Component {
+  static propTypes = {
+    children: PropTypes.func.isRequired
+  }
+
+  componentDidMount () {
+    this.componentDidUpdate()
+  }
+
+  componentDidUpdate (prevProps = {}) {
+    if (this.props.value !== prevProps.value) {
+      this.setState({
+        resolvedName: null
+      }, () => {
+        const { value } = this.props
+
+        provider.lookupAddress(value)
+          .then(resolvedName => {
+            this.setState({ resolvedName })
+          })
+          .catch(console.error.bind(console))
+      })
+    }
+  }
+
+  render () {
+    return this.props.children(this.state.resolvedName)
+  }
+}
+
+
+
+class AddressInApp extends PureComponent {
+  render () {
+    const { value } = this.props
+
+    return (
+      <Address value={value}>
+        {resolvedName => (
+          <span>
+            <a title='View stats for this address' href={`/address/${value}`}>
+              {value}
+            </a>
+            {resolvedName ? (
+              <a
+                style={{ 'margin-left': '0.5em' }}
+                title='View stats for this name' href={`/name/${resolvedName}`}
+              >
+                ({resolvedName})
+              </a>
+            ) : null}
+          </span>
+        )}
+
+      </Address>
+    )
+  }
+}
+
+
+
+export default class ChainValue extends PureComponent {
   render () {
     const { type, value } = this.props
 
     switch (type) {
       case 'tx': {
-        return <Tx value={value}>{value}</Tx>
+        return <Tx value={value} />
       }
       case 'block': {
-        return <Block value={value}>{value}</Block>
+        return <Block value={value} />
       }
       case 'address': {
-        return <Address value={value}>{value}</Address>
-      }
-      case 'address-in-app': {
-        return <AddressInApp value={value}>{value}</AddressInApp>
+        return <AddressInApp value={value} />
       }
       default: {
         return value
