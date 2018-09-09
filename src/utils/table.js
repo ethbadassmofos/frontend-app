@@ -32,6 +32,9 @@ export const processNodeEventData = history => {
 export const processNodeData = nodes => (
   nodes.map(node => (
     Object.keys(node).reduce((ret, key) => {
+      if (key === '__typename') {
+        return ret
+      }
       ret[key] = { value: node[key], options: {} }
 
       return ret
@@ -39,9 +42,8 @@ export const processNodeData = nodes => (
   ))
 )
 
-export const processOwnerStats = stats => (
+export const processOwnerStats = stats =>
   stats.map(stat => ({
     address: { value: stat.owner.address, options: { type: 'address' } },
     nodesOwned: { value: stat.nodesOwned }
   }))
-)

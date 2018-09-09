@@ -3,16 +3,55 @@ import React from 'react'
 import styled from 'styled-components'
 
 import ChainValue from '../ChainValue'
+import decryptHashes from '../../preimage'
+import R from 'ramda'
 
 class Table extends React.Component {
   state = {
-    limit: 25
+    limit: 25,
+    step: 25,
+    loadingHashes: false,
+    names: {}
   }
-  render () {
+  // async getHashes() {
+  //   const hashes = data.slice(this.state.limit - step, this.state.limit)
+  //   const names = await decryptHashes(hashes).map(node => node.labelHash)
+  //   const nameHashMap = R.zipObj(hashes, names)
+
+  //   this.setState({
+  //     names: {
+  //       ...this.state.names,
+  //       ...nameHashMap
+  //     },
+  //     hashesLoaded: this.state.limit
+  //   })
+  // }
+  // async componentDidMount() {
+  //   await this.getHashes()
+  // }
+
+  // async componentDidUpdate() {
+  //   if (this.state.hashedLoaded === this.state.limit) {
+  //     return
+  //   }
+
+  //   await this.getHashes()
+  // }
+
+  render() {
     const { data, className, paging = false } = this.props
     let slicedData
     if (paging) {
-      slicedData = data.slice(0, this.state.limit)
+      slicedData = data.slice(0, this.state.limit).map(item => {
+        if (this.state.names[item.labelHash]) {
+          return {
+            ...item,
+            name: this.state.names[item.labelHash]
+          }
+        }
+
+        return item
+      })
     }
     const labels = Object.keys(data[0])
 
@@ -20,15 +59,16 @@ class Table extends React.Component {
       <div className={className}>
         <ColumnLabels labels={labels} />
         <ColumnData data={paging ? slicedData : data} />
-        {paging && (
-          <ShowMore
-            onClick={() =>
-              this.setState(state => ({ limit: state.limit + 25 }))
-            }
-          >
-            Show more
-          </ShowMore>
-        )}
+        {paging &&
+          data.length >= this.state.limit && (
+            <ShowMore
+              onClick={() =>
+                this.setState(state => ({ limit: state.limit + 25 }))
+              }
+            >
+              Show more
+            </ShowMore>
+          )}
       </div>
     )
   }
@@ -48,8 +88,8 @@ const ShowMore = styled('div')`
 `
 
 const ColumnData = ({ data }) =>
-  (data || []).map(item => (
-    <Row>
+  (data || []).map((item, i) => (
+    <Row key={i}>
       {Object.values(item || {}).map(({ value, options = {} }) => (
         <RowItem>
           <ChainValue type={options.type} value={value} />
