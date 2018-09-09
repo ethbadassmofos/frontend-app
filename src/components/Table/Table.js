@@ -14,33 +14,33 @@ class Table extends React.Component {
     names: {}
   }
 
-  async getHashes() {
-    const hashes = this.props.data.slice(
-      this.state.limit - this.state.step,
-      this.state.limit
-    )
-    const names = (await decryptHashes(hashes)).map(node => node.labelHash)
-    const nameHashMap = R.zipObj(hashes, names)
+  // async getHashes() {
+  //   const hashes = this.props.data.slice(
+  //     this.state.limit - this.state.step,
+  //     this.state.limit
+  //   )
+  //   const names = (await decryptHashes(hashes)).map(node => node.labelHash)
+  //   const nameHashMap = R.zipObj(hashes, names)
 
-    this.setState({
-      names: {
-        ...this.state.names,
-        ...nameHashMap
-      },
-      hashesLoaded: this.state.limit
-    })
-  }
-  async componentDidMount() {
-    await this.getHashes()
-  }
+  //   this.setState({
+  //     names: {
+  //       ...this.state.names,
+  //       ...nameHashMap
+  //     },
+  //     hashesLoaded: this.state.limit
+  //   })
+  // }
+  // async componentDidMount() {
+  //   await this.getHashes()
+  // }
 
-  async componentDidUpdate() {
-    if (this.state.hashedLoaded === this.state.limit) {
-      return
-    }
+  // async componentDidUpdate() {
+  //   if (this.state.hashedLoaded === this.state.limit) {
+  //     return
+  //   }
 
-    await this.getHashes()
-  }
+  //   await this.getHashes()
+  // }
 
   render() {
     const { data, className, paging = false } = this.props
@@ -93,7 +93,10 @@ const ShowMore = styled('div')`
 
 const ColumnData = ({ data }) =>
   (data || []).map((item, i) => (
-    <Row key={i} squatPercent={ item.squatLevel && item.squatLevel.percent || ''}>
+    <Row
+      key={i}
+      squatPercent={(item.squatLevel && item.squatLevel.percent) || ''}
+    >
       {Object.values(item || {}).map(({ value, options = {} }) => (
         <RowItem>
           <ChainValue type={options.type} value={value} />
@@ -112,7 +115,11 @@ const ColumnLabels = ({ labels }) => (
 
 const Row = styled('div')`
   display: flex;
-  background: linear-gradient(to right, #adccef  ${({ squatPercent }) => squatPercent}%,#ffffff ${({ squatPercent }) => squatPercent}%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: linear-gradient(
+    to right,
+    #adccef ${({ squatPercent }) => squatPercent}%,
+    #ffffff ${({ squatPercent }) => squatPercent}%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 `
 
 const LabelItem = styled('div')`
