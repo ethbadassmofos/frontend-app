@@ -10,33 +10,37 @@ class Table extends React.Component {
   state = {
     limit: 25,
     step: 25,
-    loadingHashes: false,
+    hashesLoaded: 0,
     names: {}
   }
-  // async getHashes() {
-  //   const hashes = data.slice(this.state.limit - step, this.state.limit)
-  //   const names = await decryptHashes(hashes).map(node => node.labelHash)
-  //   const nameHashMap = R.zipObj(hashes, names)
 
-  //   this.setState({
-  //     names: {
-  //       ...this.state.names,
-  //       ...nameHashMap
-  //     },
-  //     hashesLoaded: this.state.limit
-  //   })
-  // }
-  // async componentDidMount() {
-  //   await this.getHashes()
-  // }
+  async getHashes() {
+    const hashes = this.props.data.slice(
+      this.state.limit - this.state.step,
+      this.state.limit
+    )
+    const names = (await decryptHashes(hashes)).map(node => node.labelHash)
+    const nameHashMap = R.zipObj(hashes, names)
 
-  // async componentDidUpdate() {
-  //   if (this.state.hashedLoaded === this.state.limit) {
-  //     return
-  //   }
+    this.setState({
+      names: {
+        ...this.state.names,
+        ...nameHashMap
+      },
+      hashesLoaded: this.state.limit
+    })
+  }
+  async componentDidMount() {
+    await this.getHashes()
+  }
 
-  //   await this.getHashes()
-  // }
+  async componentDidUpdate() {
+    if (this.state.hashedLoaded === this.state.limit) {
+      return
+    }
+
+    await this.getHashes()
+  }
 
   render() {
     const { data, className, paging = false } = this.props
