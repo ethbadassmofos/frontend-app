@@ -3,8 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import ChainValue from '../ChainValue'
-import decryptHashes from '../../preimage'
-import R from 'ramda'
+// import decryptHashes from '../../preimage'
+// import R from 'ramda'
 
 class Table extends React.Component {
   state = {
@@ -27,7 +27,7 @@ class Table extends React.Component {
   //   })
   // }
   // async componentDidMount() {
-  //   this.getHashes()
+  //   await this.getHashes()
   // }
 
   // async componentDidUpdate() {
@@ -35,7 +35,7 @@ class Table extends React.Component {
   //     return
   //   }
 
-  //   this.getHashes()
+  //   await this.getHashes()
   // }
 
   render() {
@@ -59,15 +59,16 @@ class Table extends React.Component {
       <div className={className}>
         <ColumnLabels labels={labels} />
         <ColumnData data={paging ? slicedData : data} />
-        {paging && (
-          <ShowMore
-            onClick={() =>
-              this.setState(state => ({ limit: state.limit + 25 }))
-            }
-          >
-            Show more
-          </ShowMore>
-        )}
+        {paging &&
+          data.length >= this.state.limit && (
+            <ShowMore
+              onClick={() =>
+                this.setState(state => ({ limit: state.limit + 25 }))
+              }
+            >
+              Show more
+            </ShowMore>
+          )}
       </div>
     )
   }
@@ -86,7 +87,7 @@ const ShowMore = styled('div')`
   }
 `
 
-const ColumnData = ({ data }) => (
+const ColumnData = ({ data }) =>
   (data || []).map((item, i) => (
     <Row key={i}>
       {Object.values(item || {}).map(({ value, options = {} }) => (
@@ -95,7 +96,7 @@ const ColumnData = ({ data }) => (
         </RowItem>
       ))}
     </Row>
-  )))
+  ))
 
 const ColumnLabels = ({ labels }) => (
   <LabelContainer>
