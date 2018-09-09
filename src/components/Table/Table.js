@@ -10,12 +10,16 @@ class Table extends React.Component {
   state = {
     limit: 25,
     step: 25,
-    loadingHashes: false,
+    hashesLoaded: 0,
     names: {}
   }
+
   // async getHashes() {
-  //   const hashes = data.slice(this.state.limit - step, this.state.limit)
-  //   const names = await decryptHashes(hashes).map(node => node.labelHash)
+  //   const hashes = this.props.data.slice(
+  //     this.state.limit - this.state.step,
+  //     this.state.limit
+  //   )
+  //   const names = (await decryptHashes(hashes)).map(node => node.labelHash)
   //   const nameHashMap = R.zipObj(hashes, names)
 
   //   this.setState({
@@ -89,7 +93,10 @@ const ShowMore = styled('div')`
 
 const ColumnData = ({ data }) =>
   (data || []).map((item, i) => (
-    <Row key={i} squatPercent={ (item.squatLevel && item.squatLevel.percent) || ''}>
+    <Row
+      key={i}
+      squatPercent={(item.squatLevel && item.squatLevel.percent) || ''}
+    >
       {Object.values(item || {}).map(({ value, options = {} }) => (
         <RowItem>
           <ChainValue type={options.type} value={value} />
@@ -108,7 +115,11 @@ const ColumnLabels = ({ labels }) => (
 
 const Row = styled('div')`
   display: flex;
-  background: linear-gradient(to right, #adccef  ${({ squatPercent }) => squatPercent}%,#ffffff ${({ squatPercent }) => squatPercent}%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: linear-gradient(
+    to right,
+    #adccef ${({ squatPercent }) => squatPercent}%,
+    #ffffff ${({ squatPercent }) => squatPercent}%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 `
 
 const LabelItem = styled('div')`
