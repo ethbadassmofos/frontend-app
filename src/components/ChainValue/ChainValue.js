@@ -74,13 +74,13 @@ class AddressInApp extends PureComponent {
                 top: '60%',
                 transform: 'translateY(-50%)'
               }} tooltip={(
-                <span>
-                  Reverse record:
-                  <a style={{ 'margin-left': '0.5em' }} title='View stats for this name' href={`/name/${resolvedName}`}>{resolvedName}</a>
-                </span>
+                <a style={{ 'margin-left': '0.5em' }} title='View stats for this name' href={`/name/${resolvedName}`}>{resolvedName}</a>
               )}/>
             ) : null}
-            <a title='View stats for this address' href={`/address/${value}`}>
+            <a
+              title='View stats for this address' href={`/address/${value}`}
+              style={{ 'font-family': 'Overpass Mono, monospace' }}
+            >
               {value}
             </a>
           </span>

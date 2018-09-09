@@ -107,8 +107,8 @@ const ColumnData = ({ data }) =>
 
 const ColumnLabels = ({ labels }) => (
   <LabelContainer>
-    {labels.map(label => (
-      <LabelItem key={label}>{label}</LabelItem>
+    {labels.map((label, index) => (
+      <LabelItem key={label} index={index}>{label}</LabelItem>
     ))}
   </LabelContainer>
 )
@@ -123,7 +123,7 @@ const Row = styled('div')`
 `
 
 const LabelItem = styled('div')`
-  flex: 1 1 0;
+  flex: ${({ index }) => index === 0 ? "2 1 0": "1 1 0"};
   text-align: center;
   font-weight: 800;
   font-size: 18px;

@@ -21,13 +21,14 @@ const Div = styled('div')`
   & div {
     position: absolute;
     top: -5px;
-    left: 10px;
+    left: 0px;
     background-color: #fff;
     border-radius: 5px;
     border: 1px solid #999;
-    padding: 0.5em 1em;
+    padding: 0.2em 0.3em;
     display: none;
     z-index: 1000;
+    font-size: 80%;
   }
   &:hover {
     div {
