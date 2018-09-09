@@ -27,6 +27,7 @@ const Div = styled('div')`
     border: 1px solid #999;
     padding: 0.5em 1em;
     display: none;
+    z-index: 1000;
   }
   &:hover {
     div {
