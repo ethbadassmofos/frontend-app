@@ -13,7 +13,6 @@ class Table extends React.Component {
     loadingHashes: false,
     names: {}
   }
-<<<<<<< HEAD
   // async getHashes() {
   //   const hashes = data.slice(this.state.limit - step, this.state.limit)
   //   const names = await decryptHashes(hashes).map(node => node.labelHash)
@@ -40,9 +39,6 @@ class Table extends React.Component {
   // }
 
   render() {
-=======
-  render () {
->>>>>>> 1fb64e63eb045d1f60c716c4577b6dfe3bd5fb9f
     const { data, className, paging = false } = this.props
     let slicedData
     if (paging) {
