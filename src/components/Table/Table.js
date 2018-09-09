@@ -89,7 +89,7 @@ const ShowMore = styled('div')`
 
 const ColumnData = ({ data }) =>
   (data || []).map((item, i) => (
-    <Row key={i} squatPercent={ item.squatLevel && item.squatLevel.percent || ''}>
+    <Row key={i} squatPercent={ (item.squatLevel && item.squatLevel.percent) || ''}>
       {Object.values(item || {}).map(({ value, options = {} }) => (
         <RowItem>
           <ChainValue type={options.type} value={value} />
