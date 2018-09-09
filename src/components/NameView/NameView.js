@@ -11,7 +11,7 @@ const NameView = ({ data: { ensNode } }) => {
   }
 
   const {
-    node: { name }, owner: { address }, resolverHistory, ownerHistory = []
+    node: { name }, addr, resolverHistory, ownerHistory = []
   } = ensNode
 
   const massagedData = processNodeEventData(ownerHistory)
@@ -19,10 +19,15 @@ const NameView = ({ data: { ensNode } }) => {
   return (
     <Fragment>
       <Card>
-        <Label>{`${name} - ${address}`}</Label>
+        <div>
+        <Label>{`ENS name `}</Label><LabelValue>{`- ${name}`}</LabelValue>
+        </div>
+        <div>
+          <Label>{`Resolve-to-address `}</Label><LabelValue>{`- ${addr || 'Resolver not set'}`}</LabelValue>
+        </div>
       </Card>
       <Card>
-        <Label textAlign="center">Ownership History</Label>
+        <Label className='center'>Ownership History</Label>
         <Table data={massagedData} />
       </Card>
       {resolverHistory === null ? '' : <Table data={resolverHistory} />}
@@ -37,9 +42,18 @@ const Label = styled('label')`
   line-height: 1.35;
   font-family: Avenir;
   padding: 0;
-  display: block;
-  text-align: ${props => props.textAlign || 'left'};
+  display: inline;
+  text-align: center;
+
+  &.center {
+    display: block;
+  }
 `
+
+const LabelValue = styled(Label)`
+  font-weight: 400;
+`
+
 const styledNameView = styled(NameView)`
   display: flex;
 `

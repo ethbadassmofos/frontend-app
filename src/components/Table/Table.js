@@ -16,10 +16,10 @@ const Table = ({ data, className }) => {
 }
 
 const ColumnData = ({ data }) => (
-  (data || []).map(item => (
-    <Row>
+  (data || []).map((item, i) => (
+    <Row key={i}>
       {Object.values(item || {}).map(({ value, options: { type } }) => (
-        <RowItem>
+        <RowItem key={value}>
           <ChainValue type={type} value={value} />
         </RowItem>
       ))}
