@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
+import Img from '../Img'
 import { provider } from '../../ethers'
 
 const VIEW_ON_ETHERSCAN = 'View on Etherscan'
@@ -58,6 +59,14 @@ class AddressInApp extends PureComponent {
       <Address value={value}>
         {resolvedName => (
           <span>
+            {resolvedName ? (
+              <Img id='reverseResolution' width='20px' style={{
+                position: 'absolute',
+                left: 0,
+                top: '60%',
+                transform: 'translateY(-50%)'
+              }} />
+            ) : null}
             <a title='View stats for this address' href={`/address/${value}`}>
               {value}
             </a>

@@ -93,7 +93,7 @@ const ShowMore = styled('div')`
 
 const ColumnData = ({ data }) =>
   (data || []).map((item, i) => (
-    <Row key={i}>
+    <Row key={i} squatPercent={ item.squatLevel && item.squatLevel.percent || ''}>
       {Object.values(item || {}).map(({ value, options = {} }) => (
         <RowItem>
           <ChainValue type={options.type} value={value} />
@@ -112,6 +112,7 @@ const ColumnLabels = ({ labels }) => (
 
 const Row = styled('div')`
   display: flex;
+  background: linear-gradient(to right, #adccef  ${({ squatPercent }) => squatPercent}%,#ffffff ${({ squatPercent }) => squatPercent}%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 `
 
 const LabelItem = styled('div')`
@@ -130,11 +131,6 @@ const RowItem = styled(LabelItem)`
   text-overflow: ellipsis;
   position: relative;
   transition: 0.2s;
-
-  &:hover {
-    text-overflow: initial;
-    overflow: visible;
-  }
 `
 
 const LabelContainer = styled('div')`

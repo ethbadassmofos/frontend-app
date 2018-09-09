@@ -31,7 +31,7 @@ const Logo = ({ color, className, to = '' }) => (
   <LogoContainer className={className} to={to}>
     <IconLogo src={ENSLogo} />
     <LogoTyped color={color} />
-    <LogoText>xplorer</LogoText>
+    <LogoText>plorer</LogoText>
   </LogoContainer>
 )
 

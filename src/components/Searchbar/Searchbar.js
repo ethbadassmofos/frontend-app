@@ -18,7 +18,14 @@ const Searchbar = ({ onSearch, className }) => (
       autoComplete="off"
       onSubmit={e => {
         e.preventDefault()
-        onSearch(e.target.searchfield.value)
+
+        // strip '.eth' from the end
+        let { value } = e.target.searchfield
+        if (value.toLowerCase().endsWith('.eth')) {
+          value = value.substr(0, value.length - 4)
+        }
+
+        onSearch(value)
       }}
     >
       <Logo />

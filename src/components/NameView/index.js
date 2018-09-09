@@ -45,7 +45,7 @@ const NameViewContainer = ({ query: name }) => (
   <Query query={GET_ENS_NAME_QUERY} variables={{ name }}>
     {({ loading, error, data }) => {
       if (loading) return <Loader loading={loading} />
-      if (data.ensNode === null) return <NotFound>Not Found, Much Sad ;(</NotFound>
+      if (data.ensNode === null) return <NotFound />
       if (error) return `Error! ${error.message}`
 
       return (
