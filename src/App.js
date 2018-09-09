@@ -5,6 +5,7 @@ import {
   Route
 } from 'react-router-dom'
 import Searchbar from './components/Searchbar'
+import Home from './routes/home'
 import Name from './routes/name'
 import Address from './routes/address'
 import Consumer, { GlobalProvider } from './GlobalState'
@@ -28,7 +29,10 @@ const App = () => (
             >
               {style => (
                 <Switch location={location}>
-                  <Route exact path="/" render={() => <div>Home</div>} />
+                  <Route
+                    exact path="/"
+                    render={props => Home({ ...props, style })}
+                  />
                   <Route
                     path="/name/:name"
                     render={props => Name({ ...props, style })}
