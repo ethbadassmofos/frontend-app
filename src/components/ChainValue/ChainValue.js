@@ -6,6 +6,14 @@ import { provider } from '../../ethers'
 
 const VIEW_ON_ETHERSCAN = 'View on Etherscan'
 
+
+const Action = ({ value }) => (
+  <a title={VIEW_ON_ETHERSCAN} href={`https://etherscan.io/tx/${value}`}>
+    <Img id={`${value}Action`} width='20px' />
+    {value}
+  </a>
+)
+
 const Tx = ({ value }) => (
   <a title={VIEW_ON_ETHERSCAN} href={`https://etherscan.io/tx/${value}`}>{value}</a>
 )
@@ -65,19 +73,16 @@ class AddressInApp extends PureComponent {
                 left: 0,
                 top: '60%',
                 transform: 'translateY(-50%)'
-              }} />
+              }} tooltip={(
+                <a style={{ 'marginLeft': '0.5em' }} title='View stats for this name' href={`/name/${resolvedName}`}>{resolvedName}</a>
+              )}/>
             ) : null}
-            <a title='View stats for this address' href={`/address/${value}`}>
+            <a
+              title='View stats for this address' href={`/address/${value}`}
+              style={{ 'fontFamily': 'Overpass Mono, monospace' }}
+            >
               {value}
             </a>
-            {resolvedName ? (
-              <a
-                style={{ 'margin-left': '0.5em' }}
-                title='View stats for this name' href={`/name/${resolvedName}`}
-              >
-                ({resolvedName})
-              </a>
-            ) : null}
           </span>
         )}
 
@@ -93,6 +98,9 @@ export default class ChainValue extends PureComponent {
     const { type, value } = this.props
 
     switch (type) {
+      case 'action': {
+        return <Action value={value} />
+      }
       case 'tx': {
         return <Tx value={value} />
       }

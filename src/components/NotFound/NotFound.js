@@ -10,7 +10,7 @@ const NotDoge = styled('img')`
 `
 
 const NotFoundText = styled('div')`
-  font-family: Avenir;
+  font-family: Avenir, Overpass, sans-serif;
   font-size: 18px;
   position: relative;
   text-align: center;

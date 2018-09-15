@@ -5,7 +5,7 @@ export const Label = styled('label')`
   color: #2f2833;
   font-weight: 700;
   line-height: 1.35;
-  font-family: Avenir;
+  font-family: Avenir, Overpass, sans-serif;
   padding: 0;
   display: inline;
   text-align: center;
